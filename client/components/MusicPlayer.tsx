@@ -3,7 +3,9 @@ import { useNavigate } from 'react-router-dom'
 import React, { useEffect } from 'react'
 
 function MusicPlayer({ music = '' }) {
-  const audio = new Audio('/music.mp3')
+
+
+  const audio = new Audio('/8AM.mp3')
   audio.loop = true
 
   useEffect(() => {

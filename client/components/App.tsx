@@ -3,8 +3,8 @@ import MusicPlayer from './MusicPlayer'
 import { useEffect } from 'react'
 
 function App() {
-  const [currentSong, setCurrentSong] = useState('romantic') // Set default song name
-  const audio = new Audio('8AM')
+  const [currentSong, setCurrentSong] = useState('') // Set default song name
+  const audio = new Audio('Palace.mp3')
   audio.loop = true
   const pauseMusic = () => {
     audio.pause()
@@ -12,15 +12,22 @@ function App() {
   const playMusic = () => {
     audio.play()
   }
-  // const nextSong = () => {
-  //   if (currentSong === 'romantic') {
-  //     setCurrentSong('Palace')
-  //   } else if (currentSong === 'Palace') {
-  //     setCurrentSong('8AM')
-  //   } else if (currentSong === '8AM') {
-  //     setCurrentSong('romantic')
-  //   }
-  // }
+  const nextSong = () => {
+    if (currentSong === 'romantic') {
+      setPlaying(false);
+      setCurrentSong('Palace');
+    } else if (currentSong === 'Palace') {
+      setPlaying(false);
+      setCurrentSong('8AM');
+    } else if (currentSong === '8AM') {
+      setPlaying(false);
+      setCurrentSong('romantic');
+    }
+    playMusic()
+  }
+
+  
+  
   return (
     <>
       <div style={{ height: '100px', position: 'relative' }}>
@@ -33,7 +40,8 @@ function App() {
         <div style={{ display: 'flex', justifyContent: 'left' }}>
           <button onClick={playMusic}>Play</button>
           <button onClick={pauseMusic}>Pause</button>
-          {/* <button onClick={nextSong}>Next Song</button> */}
+          <button  onClick={nextSong}>Next Song</button>
+          
         </div>
       </div>
     </>
@@ -41,3 +49,7 @@ function App() {
 }
 
 export default App
+function setPlaying(_arg0: boolean) {
+  throw new Error('Function not implemented.')
+}
+
