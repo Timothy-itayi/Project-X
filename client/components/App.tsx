@@ -1,6 +1,10 @@
 import { useState } from 'react'
 import MusicPlayer from './MusicPlayer'
+import MyForm from './Discover'
+import ProfilePageSelector from './ProfileImage'
 import { useEffect } from 'react'
+import { isButtonElement } from 'react-router-dom/dist/dom'
+import { Route } from 'react-router-dom'
 
 function App() {
   const [currentSong, setCurrentSong] = useState('') // Set default song name
@@ -25,15 +29,32 @@ function App() {
     }
     playMusic()
   }
-
+  interface Props{
+    name: string
+    password: string
+  }
   
+
   
   return (
     <>
+    
       <div style={{ height: '100px', position: 'relative' }}>
         <div className="img-wrapper" style={{ position: 'relative' }}>
           <MusicPlayer music="Palace.mp3" />
           <img className="img" src="/./images/backGround.png" alt="Image"></img>
+          <img  className="img" src="/./images/8009-ferrari-formula-1.jpg" alt="Image"></img>
+           <switch>
+
+  
+
+
+  <MyForm />
+ 
+           </switch>
+           
+         
+          
         </div>
 
         <h1 className="header">Project-X</h1>
