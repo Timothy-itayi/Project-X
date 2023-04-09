@@ -1,25 +1,62 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import React, { useEffect } from 'react'
+import React, { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
+import AudioPlayer from './AudioPlayer';
 
-function MusicPlayer({ music = '' }) {
-
-
-  const audio = new Audio('/8AM.mp3')
-  audio.loop = true
-
-  useEffect(() => {
-    console.log('MusicPlayer mounted')
-    audio.play()
-
-    return () => {
-      audio.pause()
-      audio.currentTime = 0
-      console.log('MusicPlayer unmounted')
-    }
-  }, [audio])
-
-  return null
+interface MusicPlayerProps {
+  isPlaying: boolean;
+  setPlaying: Dispatch<SetStateAction<boolean>>;
 }
 
-export default MusicPlayer
+function MusicPlayer({ isPlaying, setPlaying }: MusicPlayerProps) {
+  const [currentSong, setCurrentSong] = useState<string>('8AM');
+  const AUDIO_BASE_URL: string = '/';
+  const audioRef = useRef<HTMLAudioElement>();
+
+  const playMusic = (): void => {
+    if (!audioRef.current) {
+      audioRef.current = new Audio(`${AUDIO_BASE_URL}${currentSong}.mp3`);
+      audioRef.current.load();
+    }
+    setPlaying(true);
+    audioRef.current.play();
+  };
+
+  const pauseMusic = (): void => {
+    if (audioRef.current) {
+      setPlaying(false);
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
+  };
+
+  const nextSong = (): void => {
+    let newSong: string = '';
+    if (currentSong === 'romantic') {
+      newSong = 'Palace';
+    } else if (currentSong === 'Palace') {
+      newSong = '8AM';
+    } else if (currentSong === '8AM') {
+      newSong = 'romantic';
+    }
+    setCurrentSong(newSong);
+    pauseMusic();
+  };
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current = undefined;
+    }
+  }, [currentSong]);
+
+  return (
+    <AudioPlayer
+      currentSong={currentSong}
+      isPlaying={isPlaying}
+      playMusic={playMusic}
+      pauseMusic={pauseMusic}
+      nextSong={nextSong}
+    />
+  );
+}
+
+export default MusicPlayer;
