@@ -59,4 +59,4 @@ function MusicPlayer({ isPlaying, setPlaying }: MusicPlayerProps) {
   );
 }
 
-export default MusicPlayer;
+export default MusicPlayer
