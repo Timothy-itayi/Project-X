@@ -87,6 +87,7 @@ background-color: #d90000;
 }
 
 .image-buttons {
+  align-self: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -94,6 +95,7 @@ background-color: #d90000;
 }
 
 .image-buttons button {
+  align-self: center;
   border: none;
   background-color: transparent;
   margin: 5px;
@@ -117,6 +119,7 @@ background-color: #d90000;
 }
 
 .image-buttons button img {
+  align-items: center;
   width: 100%;
   height: 100%;
   object-fit: cover;

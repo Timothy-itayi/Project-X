@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import MusicPlayer from './MusicPlayer'
-import MyForm from './Discover'
+
 import ProfilePageSelector from './ProfileImageSelector'
 import { useEffect } from 'react'
 import { isButtonElement } from 'react-router-dom/dist/dom'
-import { Route } from 'react-router-dom'
-import Discover from './Discover'
+import { Route, Routes } from 'react-router-dom'
+import MainLayout from './MainLayout'
+
 
 function App() {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
@@ -34,7 +35,8 @@ function App() {
 
         <h1 className="header">Project-X</h1>
         <div style={{ display: 'flex', justifyContent: 'left' }}>
-      
+     
+        
           <ProfilePageSelector />
         </div>
       </div>

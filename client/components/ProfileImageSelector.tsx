@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import MainLayout from "./MainLayout";
 import Image01Component from "./Image01Component";
 import Image02Component from "./Image02Component";
 import Image03Component from "./Image03Component";
@@ -12,7 +12,7 @@ interface Image {
 }
 
 export const ProfileImageSelector = () => {
-  
+ 
   const [selectedImage, setSelectedImage] = useState("");
 
   const images: Image[] = [
@@ -40,8 +40,19 @@ export const ProfileImageSelector = () => {
 
   const handleClick = (image: Image) => {
     setSelectedImage(image.name);
-    // history.push(`/${image.name}`);
+    const URL ="https://timothy-itayi.github.io";
+    
+    let targetURL = "";
+  
+    if (image.name === "image01.JPG") {
+      targetURL = URL;
+      window.location.href = targetURL;
+    } else {
+      console.log(`Clicked image: ${image.name}`);
+    }
   };
+  
+  console.log(handleClick);
 
   return (
     <div className="profile-image-selector">
