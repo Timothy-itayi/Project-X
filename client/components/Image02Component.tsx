@@ -1,44 +1,52 @@
-import React, { useState } from "react";
-import GoBackButton from "./GoBackButton";
-import SignUpForm from "./SignUpForm";
+// import React, { useState } from 'react'
+// import GoBackButton from './GoBackButton'
+// import SignUpForm from './SignUpForm'
 
-interface Image02Props {
-  image: string;
-  index: number;
-  onGoBack: () => void;
-}
+// interface Image02Props {
+//   image: string
+//   index: number
+//   onGoBack: () => void
+// }
 
-const Image02Component: React.FC<Image02Props> = ({ image = "image02.JPG", index = 2, onGoBack }) => {
-  const [clicked, setClicked] = useState(false);
+// const Image02Component: React.FC<Image02Props> = ({
+//   image = 'image02.JPG',
+//   index = 2,
+//   onGoBack,
+// }) => {
+//   const [clicked, setClicked] = useState(false)
 
-  // const handleGoBack = () => {
-  //   onGoBack();
-  // };
+//   // const handleGoBack = () => {
+//   //   onGoBack();
+//   // };
 
-  const handleClick = () => {
-    setClicked(true);
-    console.log (handleClick)
-  };
+//   const handleClick = () => {
+//     setClicked(true)
+//     console.log(handleClick)
+//   }
 
-  if (!image) {
-    return <div>Error: No image provided.</div>;
-  }
+//   if (!image) {
+//     return <div>Error: No image provided.</div>
+//   }
 
-  if (clicked) {
-    return (
-      <div>
-        <SignUpForm onGoBack={handleGoBack} />
-      </div>
-    )
-    }
+//   if (clicked) {
+//     // function handleGoBack(): void {
+//     //   throw new Error('Function not implemented.')
+//     // }
 
-  // return (
-  //   <div>
-  //     <h1>Image {index}</h1>
-      // <img src={`/images/${image}`} alt={`Profile Image ${index}`} onClick={handleClick} />
-  //     <GoBackButton onClick={handleGoBack} />
-  //   </div>
-  // );
-};
+//     return (
+//       <div>
+//         <SignUpForm />
+//       </div>
+//     )
+//   }
 
-export default Image02Component;
+//   // return (
+//   //   <div>
+//   //     <h1>Image {index}</h1>
+//   // <img src={`/images/${image}`} alt={`Profile Image ${index}`} onClick={handleClick} />
+//   //     <GoBackButton onClick={handleGoBack} />
+//   //   </div>
+//   );
+// }
+
+// export default Image02Component
