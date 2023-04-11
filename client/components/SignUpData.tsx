@@ -1,13 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { getAllUsers } from '../apis/users' // Import the functions from your api folder
 
-interface PropsData {
+interface UserData {
   name: string
-  Likes: string
-  Dislikes: string
-  DateofBirth: number
+  date_of_birth: number
+  likes: string
+  dislikes: string
 }
 
-const SignUpData = ({ props: PropsData }) => {
+const SignUpData = () => {
+  const [users, setUsers] = useState<UserData[]>([])
+
+  useEffect(() => {
+    getAllUsers() // Call the getAllUsers function from your api folder
+      .then((data) => setUsers(data))
+      .catch((error) => console.error('Error fetching users:', error))
+  }, [])
+
   return (
     <div>
       <h2>Sign Up Data</h2>
@@ -21,12 +30,12 @@ const SignUpData = ({ props: PropsData }) => {
           </tr>
         </thead>
         <tbody>
-          {PropsData.map((user, index) => (
+          {users.map((user, index) => (
             <tr key={index}>
               <td>{user.name}</td>
-              <td>{user.Likes}</td>
-              <td>{user.Dislikes}</td>
-              <td>{user.dateOfBirth}</td>
+              <td>{user.likes}</td>
+              <td>{user.dislikes}</td>
+              <td>{user.date_of_birth}</td>
             </tr>
           ))}
         </tbody>

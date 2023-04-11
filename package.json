@@ -5,6 +5,8 @@
   "repository": "https://github.com/dev-academy-challenges/react-boilerplate.git",
   "main": "server/index.js",
   "scripts": {
+    "knex": "knex",
+    "migrate:latest": "kenx migrate:latest",
     "start": "kill -9 $(lsof -ti:3000) && npm start ",
     "dev": "run-p client:watch server:watch",
     "webpack": "webpack --config client/webpack.config.js",
@@ -48,6 +50,7 @@
     "@types/node": "^18.11.9",
     "@types/react": "^18.0.23",
     "@types/react-dom": "^18.0.7",
+    "@types/superagent": "^4.1.16",
     "babel-loader": "^8.2.2",
     "eslint": "^8.10.0",
     "eslint-plugin-import": "^2.25.4",
@@ -73,7 +76,10 @@
   },
   "dependencies": {
     "express": "^4.17.2",
-    "node.js": "^0.0.1-security"
+    "knex": "^2.4.2",
+    "node.js": "^0.0.1-security",
+    "sqlite3": "^5.1.6",
+    "superagent": "^8.0.9"
   },
   "prettier": {
     "semi": false,
